@@ -910,7 +910,7 @@ var testArr1 = {
 // c. Mean value
 // d. Mode value
 
-//https://api.openweathermap.org/data/2.5/weather?q=Krak%C3%B3w,pl&APPID=7ad4da9ee7c5e2e647a95309d5dbaeec
+//https://api.openweathermap.org/data/2.5/forecast?q=Krak%C3%B3w,pl&APPID=7ad4da9ee7c5e2e647a95309d5dbaeec
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
     const data = await fetchHandler(`${process.env.WHOIS}`);

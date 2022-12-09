@@ -4,6 +4,11 @@ export interface OPEN_WEATHER {
     cnt: number;
     list: ListEntity[];
 }
+
+export interface WeatherValues {
+    [key: string]: number;
+}
+
 export interface ListEntity {
     dt: number;
     main: Main;
@@ -14,6 +19,7 @@ export interface ListEntity {
     pop: number;
     sys: Sys;
     dt_txt: string;
+    // weatherValues?: WeatherValues[];
 }
 export interface Main {
     temp: number;

@@ -4,8 +4,8 @@ import { Box, Text, Heading } from 'components';
 interface ITimeCityBox extends HTMLAttributes<HTMLDivElement> {
     time: string;
     city: string;
-    timeStyle: string;
-    cityStyle: string;
+    timeStyle?: string;
+    cityStyle?: string;
 }
 
 export default function TimeCityBox({ time, city, timeStyle, cityStyle, children, ...rest }: ITimeCityBox) {

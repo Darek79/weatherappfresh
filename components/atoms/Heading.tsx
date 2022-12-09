@@ -9,7 +9,7 @@ interface IHeadingsElement extends HTMLAttributes<HTMLElement> {
 
 export default function Heading({ htmlTag, styles, children, ...rest }: IHeadingsElement) {
     const TextClasses = classNames({
-        'text-2xl': htmlTag === 'h2',
+        'text-3xl': htmlTag === 'h2',
         'text-lg': htmlTag === 'h3',
         [`${styles}`]: styles,
     });
