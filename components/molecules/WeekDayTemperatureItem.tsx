@@ -5,9 +5,9 @@ export default function WeekDayTemperatureItem() {
     return (
         <Box>
             <Text>TIME</Text>
-            <IconText>
+            {/* <IconText>
                 <Text></Text>
-            </IconText>
+            </IconText> */}
         </Box>
     );
 }

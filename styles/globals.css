@@ -4,6 +4,6 @@
 
 @layer components {
     .heading {
-        @apply ml-12 font-bold;
+        @apply ml-12 font-bold text-black;
     }
 }

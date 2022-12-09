@@ -7,15 +7,27 @@ interface IWeekDayContainer extends HTMLAttributes<HTMLDivElement> {
     indexedDayObjectForecast: Array<ListEntity[]>;
 }
 
-export default function WeekDayContainer({ indexedDayObjectForecast, headingText, children, ...rest }: IWeekDayContainer) {
+export default function WeekDayContainer({
+    indexedDayObjectForecast,
+    headingText,
+    children,
+    ...rest
+}: IWeekDayContainer) {
     return (
-        <IndexedDayObjectsContext.Provider value={indexedDayObjectForecast}>
-            <Box {...rest}>
-                <Heading styles="heading" htmlTag="h3">
-                    {headingText}
-                </Heading>
-                {children}
+        <Box {...rest}>
+            <Heading styles="heading" htmlTag="h3">
+                {headingText}
+            </Heading>
+            <Box className="h-fit w-full rounded-lg bg-pageDark overflow-hidden">
+                {indexedDayObjectForecast &&
+                    indexedDayObjectForecast.map((el, i) => (
+                        <WeekDayBoxes
+                            className="h-[calc(380px/5)] text-inherit p-2"
+                            key={el[0].dt}
+                            indexedDayObjectDay={el}
+                        />
+                    ))}
             </Box>
-        </IndexedDayObjectsContext.Provider>
+        </Box>
     );
 }

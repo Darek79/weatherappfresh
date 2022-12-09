@@ -1,28 +1,12 @@
-import type { OPEN_WEATHER, ListEntity } from 'types/open_weather';
-import type { ILineChartsData } from 'types/linecharts';
-import { getMinMaxTemperature } from 'utils/getMinMaxTemperature';
-import dayjs from 'dayjs';
-// indexedDayObjects: Array<ListEntity[]>;
-
-interface IGetWeatherIndexes {
-    closestCardToShow: ListEntity;
-    indexedDayObjects: Array<ListEntity[]>;
-    findMaxMinTemperatureArr: number[];
-    findMeanModeValueArr: number[];
-    lineChartsDataArray: ILineChartsData;
-}
-var testArr1 = {
-    cod: '200',
-    message: 0,
-    cnt: 40,
-    list: [
+export const indexedDayObjects = [
+    [
         {
             dt: 1670544000,
             main: {
-                temp: 275.35,
-                feels_like: 275.35,
-                temp_min: 274.47,
-                temp_max: 275.35,
+                temp: 2,
+                feels_like: 2,
+                temp_min: 1,
+                temp_max: 2,
                 pressure: 1008,
                 sea_level: 1008,
                 grnd_level: 985,
@@ -41,10 +25,10 @@ var testArr1 = {
         {
             dt: 1670554800,
             main: {
-                temp: 274.89,
-                feels_like: 274.89,
-                temp_min: 273.96,
-                temp_max: 274.89,
+                temp: 1,
+                feels_like: 1,
+                temp_min: 0,
+                temp_max: 1,
                 pressure: 1009,
                 sea_level: 1009,
                 grnd_level: 984,
@@ -63,10 +47,10 @@ var testArr1 = {
         {
             dt: 1670565600,
             main: {
-                temp: 273.95,
-                feels_like: 273.95,
-                temp_min: 273.25,
-                temp_max: 273.95,
+                temp: 0,
+                feels_like: 0,
+                temp_min: 0,
+                temp_max: 0,
                 pressure: 1010,
                 sea_level: 1010,
                 grnd_level: 984,
@@ -84,10 +68,10 @@ var testArr1 = {
         {
             dt: 1670576400,
             main: {
-                temp: 274.49,
-                feels_like: 272.45,
-                temp_min: 274.49,
-                temp_max: 274.49,
+                temp: 1,
+                feels_like: -0,
+                temp_min: 1,
+                temp_max: 1,
                 pressure: 1011,
                 sea_level: 1011,
                 grnd_level: 984,
@@ -105,10 +89,10 @@ var testArr1 = {
         {
             dt: 1670587200,
             main: {
-                temp: 275.21,
-                feels_like: 271.79,
-                temp_min: 275.21,
-                temp_max: 275.21,
+                temp: 2,
+                feels_like: -1,
+                temp_min: 2,
+                temp_max: 2,
                 pressure: 1008,
                 sea_level: 1008,
                 grnd_level: 981,
@@ -126,10 +110,10 @@ var testArr1 = {
         {
             dt: 1670598000,
             main: {
-                temp: 273.62,
-                feels_like: 269.43,
-                temp_min: 273.62,
-                temp_max: 273.62,
+                temp: 0,
+                feels_like: -3,
+                temp_min: 0,
+                temp_max: 0,
                 pressure: 1007,
                 sea_level: 1007,
                 grnd_level: 980,
@@ -148,10 +132,10 @@ var testArr1 = {
         {
             dt: 1670608800,
             main: {
-                temp: 273.54,
-                feels_like: 270.07,
-                temp_min: 273.54,
-                temp_max: 273.54,
+                temp: 0,
+                feels_like: -3,
+                temp_min: 0,
+                temp_max: 0,
                 pressure: 1005,
                 sea_level: 1005,
                 grnd_level: 978,
@@ -170,10 +154,10 @@ var testArr1 = {
         {
             dt: 1670619600,
             main: {
-                temp: 273.55,
-                feels_like: 270.47,
-                temp_min: 273.55,
-                temp_max: 273.55,
+                temp: 0,
+                feels_like: -2,
+                temp_min: 0,
+                temp_max: 0,
                 pressure: 1003,
                 sea_level: 1003,
                 grnd_level: 976,
@@ -189,13 +173,15 @@ var testArr1 = {
             sys: { pod: 'n' },
             dt_txt: '2022-12-09 21:00:00',
         },
+    ],
+    [
         {
             dt: 1670630400,
             main: {
-                temp: 273.63,
-                feels_like: 271.35,
-                temp_min: 273.63,
-                temp_max: 273.63,
+                temp: 0,
+                feels_like: -1,
+                temp_min: 0,
+                temp_max: 0,
                 pressure: 1003,
                 sea_level: 1003,
                 grnd_level: 976,
@@ -214,10 +200,10 @@ var testArr1 = {
         {
             dt: 1670641200,
             main: {
-                temp: 273.73,
-                feels_like: 271.38,
-                temp_min: 273.73,
-                temp_max: 273.73,
+                temp: 0,
+                feels_like: -1,
+                temp_min: 0,
+                temp_max: 0,
                 pressure: 1004,
                 sea_level: 1004,
                 grnd_level: 978,
@@ -236,10 +222,10 @@ var testArr1 = {
         {
             dt: 1670652000,
             main: {
-                temp: 273.66,
-                feels_like: 271.65,
-                temp_min: 273.66,
-                temp_max: 273.66,
+                temp: 0,
+                feels_like: -1,
+                temp_min: 0,
+                temp_max: 0,
                 pressure: 1006,
                 sea_level: 1006,
                 grnd_level: 979,
@@ -258,10 +244,10 @@ var testArr1 = {
         {
             dt: 1670662800,
             main: {
-                temp: 273.72,
-                feels_like: 271.89,
-                temp_min: 273.72,
-                temp_max: 273.72,
+                temp: 0,
+                feels_like: -1,
+                temp_min: 0,
+                temp_max: 0,
                 pressure: 1008,
                 sea_level: 1008,
                 grnd_level: 982,
@@ -280,10 +266,10 @@ var testArr1 = {
         {
             dt: 1670673600,
             main: {
-                temp: 273.91,
-                feels_like: 273.91,
-                temp_min: 273.91,
-                temp_max: 273.91,
+                temp: 0,
+                feels_like: 0,
+                temp_min: 0,
+                temp_max: 0,
                 pressure: 1008,
                 sea_level: 1008,
                 grnd_level: 981,
@@ -302,10 +288,10 @@ var testArr1 = {
         {
             dt: 1670684400,
             main: {
-                temp: 273.59,
-                feels_like: 271.54,
-                temp_min: 273.59,
-                temp_max: 273.59,
+                temp: 0,
+                feels_like: -1,
+                temp_min: 0,
+                temp_max: 0,
                 pressure: 1009,
                 sea_level: 1009,
                 grnd_level: 982,
@@ -324,10 +310,10 @@ var testArr1 = {
         {
             dt: 1670695200,
             main: {
-                temp: 273.53,
-                feels_like: 270.55,
-                temp_min: 273.53,
-                temp_max: 273.53,
+                temp: 0,
+                feels_like: -2,
+                temp_min: 0,
+                temp_max: 0,
                 pressure: 1009,
                 sea_level: 1009,
                 grnd_level: 982,
@@ -346,10 +332,10 @@ var testArr1 = {
         {
             dt: 1670706000,
             main: {
-                temp: 273.04,
-                feels_like: 268.69,
-                temp_min: 273.04,
-                temp_max: 273.04,
+                temp: -0,
+                feels_like: -4,
+                temp_min: -0,
+                temp_max: -0,
                 pressure: 1009,
                 sea_level: 1009,
                 grnd_level: 982,
@@ -365,13 +351,15 @@ var testArr1 = {
             sys: { pod: 'n' },
             dt_txt: '2022-12-10 21:00:00',
         },
+    ],
+    [
         {
             dt: 1670716800,
             main: {
-                temp: 272.6,
-                feels_like: 268.08,
-                temp_min: 272.6,
-                temp_max: 272.6,
+                temp: -0,
+                feels_like: -5,
+                temp_min: -0,
+                temp_max: -0,
                 pressure: 1007,
                 sea_level: 1007,
                 grnd_level: 980,
@@ -390,10 +378,10 @@ var testArr1 = {
         {
             dt: 1670727600,
             main: {
-                temp: 272.25,
-                feels_like: 267.28,
-                temp_min: 272.25,
-                temp_max: 272.25,
+                temp: -0,
+                feels_like: -5,
+                temp_min: -0,
+                temp_max: -0,
                 pressure: 1005,
                 sea_level: 1005,
                 grnd_level: 979,
@@ -412,10 +400,10 @@ var testArr1 = {
         {
             dt: 1670738400,
             main: {
-                temp: 271.89,
-                feels_like: 266.56,
-                temp_min: 271.89,
-                temp_max: 271.89,
+                temp: -1,
+                feels_like: -6,
+                temp_min: -1,
+                temp_max: -1,
                 pressure: 1004,
                 sea_level: 1004,
                 grnd_level: 977,
@@ -434,10 +422,10 @@ var testArr1 = {
         {
             dt: 1670749200,
             main: {
-                temp: 271.91,
-                feels_like: 266.38,
-                temp_min: 271.91,
-                temp_max: 271.91,
+                temp: -1,
+                feels_like: -6,
+                temp_min: -1,
+                temp_max: -1,
                 pressure: 1004,
                 sea_level: 1004,
                 grnd_level: 977,
@@ -456,10 +444,10 @@ var testArr1 = {
         {
             dt: 1670760000,
             main: {
-                temp: 271.86,
-                feels_like: 266.76,
-                temp_min: 271.86,
-                temp_max: 271.86,
+                temp: -1,
+                feels_like: -6,
+                temp_min: -1,
+                temp_max: -1,
                 pressure: 1003,
                 sea_level: 1003,
                 grnd_level: 976,
@@ -478,10 +466,10 @@ var testArr1 = {
         {
             dt: 1670770800,
             main: {
-                temp: 271.22,
-                feels_like: 266.21,
-                temp_min: 271.22,
-                temp_max: 271.22,
+                temp: -1,
+                feels_like: -6,
+                temp_min: -1,
+                temp_max: -1,
                 pressure: 1003,
                 sea_level: 1003,
                 grnd_level: 977,
@@ -500,10 +488,10 @@ var testArr1 = {
         {
             dt: 1670781600,
             main: {
-                temp: 270.65,
-                feels_like: 266.24,
-                temp_min: 270.65,
-                temp_max: 270.65,
+                temp: -2,
+                feels_like: -6,
+                temp_min: -2,
+                temp_max: -2,
                 pressure: 1005,
                 sea_level: 1005,
                 grnd_level: 978,
@@ -522,10 +510,10 @@ var testArr1 = {
         {
             dt: 1670792400,
             main: {
-                temp: 270.25,
-                feels_like: 266.14,
-                temp_min: 270.25,
-                temp_max: 270.25,
+                temp: -2,
+                feels_like: -7,
+                temp_min: -2,
+                temp_max: -2,
                 pressure: 1005,
                 sea_level: 1005,
                 grnd_level: 978,
@@ -541,13 +529,15 @@ var testArr1 = {
             sys: { pod: 'n' },
             dt_txt: '2022-12-11 21:00:00',
         },
+    ],
+    [
         {
             dt: 1670803200,
             main: {
-                temp: 270.07,
-                feels_like: 265.97,
-                temp_min: 270.07,
-                temp_max: 270.07,
+                temp: -3,
+                feels_like: -7,
+                temp_min: -3,
+                temp_max: -3,
                 pressure: 1005,
                 sea_level: 1005,
                 grnd_level: 978,
@@ -566,10 +556,10 @@ var testArr1 = {
         {
             dt: 1670814000,
             main: {
-                temp: 269.96,
-                feels_like: 265.25,
-                temp_min: 269.96,
-                temp_max: 269.96,
+                temp: -3,
+                feels_like: -7,
+                temp_min: -3,
+                temp_max: -3,
                 pressure: 1006,
                 sea_level: 1006,
                 grnd_level: 979,
@@ -588,10 +578,10 @@ var testArr1 = {
         {
             dt: 1670824800,
             main: {
-                temp: 269.67,
-                feels_like: 264.73,
-                temp_min: 269.67,
-                temp_max: 269.67,
+                temp: -3,
+                feels_like: -8,
+                temp_min: -3,
+                temp_max: -3,
                 pressure: 1006,
                 sea_level: 1006,
                 grnd_level: 979,
@@ -610,10 +600,10 @@ var testArr1 = {
         {
             dt: 1670835600,
             main: {
-                temp: 270.12,
-                feels_like: 264.43,
-                temp_min: 270.12,
-                temp_max: 270.12,
+                temp: -3,
+                feels_like: -8,
+                temp_min: -3,
+                temp_max: -3,
                 pressure: 1008,
                 sea_level: 1008,
                 grnd_level: 981,
@@ -632,10 +622,10 @@ var testArr1 = {
         {
             dt: 1670846400,
             main: {
-                temp: 270.96,
-                feels_like: 265.48,
-                temp_min: 270.96,
-                temp_max: 270.96,
+                temp: -2,
+                feels_like: -7,
+                temp_min: -2,
+                temp_max: -2,
                 pressure: 1008,
                 sea_level: 1008,
                 grnd_level: 980,
@@ -653,10 +643,10 @@ var testArr1 = {
         {
             dt: 1670857200,
             main: {
-                temp: 269.59,
-                feels_like: 264.38,
-                temp_min: 269.59,
-                temp_max: 269.59,
+                temp: -3,
+                feels_like: -8,
+                temp_min: -3,
+                temp_max: -3,
                 pressure: 1009,
                 sea_level: 1009,
                 grnd_level: 981,
@@ -674,10 +664,10 @@ var testArr1 = {
         {
             dt: 1670868000,
             main: {
-                temp: 265.46,
-                feels_like: 260.36,
-                temp_min: 265.46,
-                temp_max: 265.46,
+                temp: -7,
+                feels_like: -12,
+                temp_min: -7,
+                temp_max: -7,
                 pressure: 1010,
                 sea_level: 1010,
                 grnd_level: 983,
@@ -695,10 +685,10 @@ var testArr1 = {
         {
             dt: 1670878800,
             main: {
-                temp: 266.16,
-                feels_like: 262.03,
-                temp_min: 266.16,
-                temp_max: 266.16,
+                temp: -6,
+                feels_like: -11,
+                temp_min: -6,
+                temp_max: -6,
                 pressure: 1011,
                 sea_level: 1011,
                 grnd_level: 983,
@@ -713,13 +703,15 @@ var testArr1 = {
             sys: { pod: 'n' },
             dt_txt: '2022-12-12 21:00:00',
         },
+    ],
+    [
         {
             dt: 1670889600,
             main: {
-                temp: 266.82,
-                feels_like: 262.9,
-                temp_min: 266.82,
-                temp_max: 266.82,
+                temp: -6,
+                feels_like: -10,
+                temp_min: -6,
+                temp_max: -6,
                 pressure: 1011,
                 sea_level: 1011,
                 grnd_level: 983,
@@ -737,10 +729,10 @@ var testArr1 = {
         {
             dt: 1670900400,
             main: {
-                temp: 263.89,
-                feels_like: 259.71,
-                temp_min: 263.89,
-                temp_max: 263.89,
+                temp: -9,
+                feels_like: -13,
+                temp_min: -9,
+                temp_max: -9,
                 pressure: 1011,
                 sea_level: 1011,
                 grnd_level: 983,
@@ -758,10 +750,10 @@ var testArr1 = {
         {
             dt: 1670911200,
             main: {
-                temp: 265.73,
-                feels_like: 261.87,
-                temp_min: 265.73,
-                temp_max: 265.73,
+                temp: -7,
+                feels_like: -11,
+                temp_min: -7,
+                temp_max: -7,
                 pressure: 1011,
                 sea_level: 1011,
                 grnd_level: 984,
@@ -780,10 +772,10 @@ var testArr1 = {
         {
             dt: 1670922000,
             main: {
-                temp: 268.72,
-                feels_like: 264.75,
-                temp_min: 268.72,
-                temp_max: 268.72,
+                temp: -4,
+                feels_like: -8,
+                temp_min: -4,
+                temp_max: -4,
                 pressure: 1012,
                 sea_level: 1012,
                 grnd_level: 984,
@@ -801,10 +793,10 @@ var testArr1 = {
         {
             dt: 1670932800,
             main: {
-                temp: 270.83,
-                feels_like: 267.24,
-                temp_min: 270.83,
-                temp_max: 270.83,
+                temp: -2,
+                feels_like: -5,
+                temp_min: -2,
+                temp_max: -2,
                 pressure: 1011,
                 sea_level: 1011,
                 grnd_level: 983,
@@ -823,10 +815,10 @@ var testArr1 = {
         {
             dt: 1670943600,
             main: {
-                temp: 270.66,
-                feels_like: 268.59,
-                temp_min: 270.66,
-                temp_max: 270.66,
+                temp: -2,
+                feels_like: -4,
+                temp_min: -2,
+                temp_max: -2,
                 pressure: 1011,
                 sea_level: 1011,
                 grnd_level: 984,
@@ -845,10 +837,10 @@ var testArr1 = {
         {
             dt: 1670954400,
             main: {
-                temp: 270.78,
-                feels_like: 270.78,
-                temp_min: 270.78,
-                temp_max: 270.78,
+                temp: -2,
+                feels_like: -2,
+                temp_min: -2,
+                temp_max: -2,
                 pressure: 1011,
                 sea_level: 1011,
                 grnd_level: 984,
@@ -867,10 +859,10 @@ var testArr1 = {
         {
             dt: 1670965200,
             main: {
-                temp: 271.01,
-                feels_like: 266.99,
-                temp_min: 271.01,
-                temp_max: 271.01,
+                temp: -2,
+                feels_like: -6,
+                temp_min: -2,
+                temp_max: -2,
                 pressure: 1012,
                 sea_level: 1012,
                 grnd_level: 985,
@@ -887,86 +879,4 @@ var testArr1 = {
             dt_txt: '2022-12-13 21:00:00',
         },
     ],
-    city: {
-        id: 3094802,
-        name: 'Krakow',
-        coord: { lat: 50.0833, lon: 19.9167 },
-        country: 'PL',
-        population: 755050,
-        timezone: 3600,
-        sunrise: 1670567218,
-        sunset: 1670596709,
-    },
-};
-
-export function getWeatherIndexes(obj: OPEN_WEATHER): IGetWeatherIndexes {
-    const findMaxMinTemperatureArr: number[] = [];
-    const findMeanModeValueArr: number[] = [];
-    const beforeDeduped: number[] = [];
-    const lineChartsDataArray: ILineChartsData = [];
-
-    const daysArr: number[] = obj.list.map((el, i) => {
-        findMaxMinTemperatureArr.push(el.main.temp);
-        findMeanModeValueArr.push(parseInt(String(el.main.temp)));
-        let index = 0;
-        for (let key in el.main) {
-            if (index <= 3) {
-                el.main[key as keyof typeof el.main] = parseInt(String(el.main[key as keyof typeof el.main] - 273.15));
-            }
-            index++;
-        }
-        const day: number = new Date(`${el.dt_txt}`).getDay();
-        return day;
-    });
-
-    daysArr.forEach((el, i) => {
-        beforeDeduped.push(daysArr.indexOf(el));
-        beforeDeduped.push(daysArr.lastIndexOf(el));
-    });
-
-    const deduped: number[] = [...new Set(beforeDeduped)];
-    const allDaysSorted: Array<ListEntity[]> = [];
-    const closestTimeArry: number[] = [];
-    const actualTime = parseInt(String(Date.now() / 1000));
-    deduped.forEach((el, i) => {
-        if ((1 + i) % 2 === 0) {
-            let slice: ListEntity[] = obj.list.slice(deduped[i - 1], deduped[i + 1]);
-            if (slice.length > 2) {
-                const sliceMinMaxTemperature: number[] = slice.map(el => el.main.feels_like);
-                const [_, minIndex] = getMinMaxTemperature(sliceMinMaxTemperature);
-                allDaysSorted.push([
-                    slice[Math.floor(Math.sqrt(8))],
-                    slice[Math.floor(sliceMinMaxTemperature.length / 2)],
-                    slice[minIndex],
-                ]);
-                return;
-            }
-            if (slice.length <= 2) {
-                allDaysSorted.push(slice);
-            }
-        }
-    });
-    Math.floor(Math.sqrt(8));
-    // console.log(allDaysSorted);
-    allDaysSorted[0].forEach(el => {
-        closestTimeArry.push(el.dt - actualTime);
-        const getDateString = el.dt_txt.split(' ')[1];
-        lineChartsDataArray.push({
-            temp: el.main.feels_like,
-            date: getDateString.substring(0, getDateString.length - 3),
-        });
-    });
-    const closestTimeToFind = Math.min(...closestTimeArry);
-    const getIndexToItem = closestTimeArry.indexOf(closestTimeToFind);
-    console.log(getIndexToItem);
-    return {
-        closestCardToShow: allDaysSorted[0][getIndexToItem],
-        indexedDayObjects: allDaysSorted,
-        findMaxMinTemperatureArr,
-        findMeanModeValueArr,
-        lineChartsDataArray,
-    };
-}
-
-const values = getWeatherIndexes(testArr1);
-console.log(values.indexedDayObjects);
+];

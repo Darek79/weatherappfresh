@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
 import { Box, PageWrapper, DayCard, LineChart, WeekDayContainer } from 'components';
-import dayjs from 'dayjs';
+import { indexedDayObjects } from 'fakeAllDays';
 // Dec 8, 06:48pm
 
 const day = {
@@ -26,6 +26,16 @@ const day = {
     sys: { pod: 'n' },
     dt_txt: '2022-12-09 00:00:00',
 };
+const data = [
+    { temp: 2, date: '00:00' },
+    { temp: 1, date: '03:00' },
+    { temp: 0, date: '06:00' },
+    { temp: -0, date: '09:00' },
+    { temp: -1, date: '12:00' },
+    { temp: -3, date: '15:00' },
+    { temp: -3, date: '18:00' },
+    { temp: -2, date: '21:00' },
+];
 
 export default function Home() {
     // useEffect(() => {
@@ -41,9 +51,19 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <DayCard actualDayObject={day} />
-            <Box className="flex">
-                <LineChart className=" rounded-xl p-2 w-[100%]" />
-                <WeekDayContainer className="basis-full" headingText="Days Forecast" />
+            <Box className="block md:flex w-full relative">
+                <LineChart
+                    headingText="Days Forecast"
+                    className="rounded-xl w-[100%]"
+                    actualDayData={day}
+                    data={data}
+                />
+
+                <WeekDayContainer
+                    className="basis-full h-[420px] md:h-[400px] px-4 text-white"
+                    headingText="Days Forecast"
+                    indexedDayObjectForecast={indexedDayObjects}
+                />
             </Box>
         </PageWrapper>
     );

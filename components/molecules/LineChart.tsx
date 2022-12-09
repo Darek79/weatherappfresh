@@ -1,4 +1,5 @@
 import { HTMLAttributes } from 'react';
+
 import {
     AreaChart,
     Area,
@@ -12,23 +13,21 @@ import {
     BarChart,
 } from 'recharts';
 import { Heading, Box } from 'components';
+import type { ILineChartsData } from 'types/linecharts';
+import type { ListEntity } from 'types/open_weather';
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-const data = [
-    { temp: 2, date: '00:00:00' },
-    { temp: 1, date: '03:00:00' },
-    { temp: 0, date: '06:00:00' },
-    { temp: -0, date: '09:00:00' },
-    { temp: -1, date: '12:00:00' },
-    { temp: -3, date: '15:00:00' },
-    { temp: -3, date: '18:00:00' },
-    { temp: -2, date: '21:00:00' },
-];
 
-export default function LineChart({ ...rest }: HTMLAttributes<HTMLDivElement>) {
+interface LineChartsDataArray extends HTMLAttributes<HTMLDivElement> {
+    data: ILineChartsData;
+    actualDayData: ListEntity;
+    headingText: string;
+}
+
+export default function LineChart({ data, actualDayData, headingText, ...rest }: LineChartsDataArray) {
     return (
         <Box {...rest}>
             <Heading styles="heading" htmlTag="h3">
-                Hourly forecast
+                {headingText}
             </Heading>
             <ResponsiveContainer width="100%" height={400} debounce={300}>
                 <AreaChart data={data} margin={{ top: 10, right: 40, left: 0, bottom: 0 }}>
