@@ -34,7 +34,7 @@ export default function DayCard({ actualDayObject, time, city }: IDayCard) {
                 width={100}
                 height={100}
             />
-            <Text className="font-bold">{`Feels like ${actualDayObject.main.feels_like}°C`}</Text>
+            <Text className="font-bold">{`Temperature: ${actualDayObject.main.temp}°C`}</Text>
             <Text className="font-bold first-letter:uppercase">{`${actualDayObject.weather[0].description}`}</Text>
             <DayCardList className="flex flex-col items-center justify-center" weatherObj={actualDayObject} />
         </Box>

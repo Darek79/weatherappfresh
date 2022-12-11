@@ -23,7 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         if (weatherObjectsJson.status >= 400) {
             throw new Error('No forecast was found');
         }
-
+        console.log(weatherObjectsJson, '123');
         const weatherObjects: OPEN_WEATHER = await weatherObjectsJson.json();
         const indexesObj: IGetWeatherIndexes = getWeatherIndexes(weatherObjects);
         indexesObj.city = ipData.city;

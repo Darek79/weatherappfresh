@@ -32,9 +32,10 @@ export default function Home({ weatherObjects }: ResponseData) {
     );
 }
 export async function getStaticProps() {
-    const dayObjectsJson = await fetch('http://localhost:3000/api/getWeatherByIP');
+    const dayObjectsJson = await fetch('https://weatherappfresh.vercel.app/api/getWeatherByIP');
     const weatherObjects: Data = await dayObjectsJson.json();
     return {
         props: { weatherObjects: weatherObjects },
     };
 }
+// https://weatherappfresh.vercel.app

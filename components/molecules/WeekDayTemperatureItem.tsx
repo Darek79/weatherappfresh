@@ -16,7 +16,7 @@ export default function WeekDayTemperatureItem({ dayObject, ...rest }: IWeekDayT
                 alt="weather_icon"
             >
                 <Box className="flex gap-1">
-                    <Text>{dayObject.main.feels_like}°C</Text>
+                    <Text>{dayObject.main.temp}°C</Text>
                 </Box>
             </IconText>
         </Box>
