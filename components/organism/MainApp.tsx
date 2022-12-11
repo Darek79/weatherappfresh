@@ -18,7 +18,7 @@ export default function MainApp({ weatherObjects }: IMainApp) {
                         {'Hourly Temperature'}
                     </Heading>
                     <LineChart
-                        height={450}
+                        height={500}
                         headingText="Days Forecast"
                         className="rounded-xl w-full"
                         actualDayData={weatherObjects!.closestCardToShow}

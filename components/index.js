@@ -15,6 +15,7 @@ export { default as LineChart } from './molecules/LineChart';
 export { default as WeekDayContainer } from './molecules/WeekDayContainer';
 export { default as WeekDayBoxes } from './molecules/WeekDayBoxes';
 export { default as WeekDayTemperatureItem } from './molecules/WeekDayTemperatureItem';
+export { default as StatusComponent } from './molecules/StatusComponent';
 
 //ORGNAISM
 

@@ -1,15 +1,12 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { getWeatherIndexes } from 'utils/getWeatherIndexes';
+import { getWeatherIndexes, IGetWeatherIndexes } from 'utils/getWeatherIndexes';
 import type { OPEN_WEATHER } from 'types/open_weather';
 import type { WHOIS } from 'types/whois';
-import { IGetWeatherIndexes } from './../../utils/getWeatherIndexes';
 interface Data {
     indexesObj: IGetWeatherIndexes | null;
     error: string | null;
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+export default async function handler(): Promise<Data | undefined> {
     try {
         const fetchedIPJson = await fetch(`${process.env.WHOIS}`);
         if (fetchedIPJson.status >= 400) {
@@ -29,10 +26,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         indexesObj.city = ipData.city;
         indexesObj.time = ipData.timezone.current_time;
 
-        res.status(200).json({ indexesObj, error: null });
+        return { indexesObj, error: null };
     } catch (error) {
         if (error) {
-            res.status(400).json({ indexesObj: null, error: 'Something went wrong' });
+            return { indexesObj: null, error: 'Something went wrong' };
         }
     }
 }
