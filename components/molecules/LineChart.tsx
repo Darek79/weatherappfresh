@@ -1,35 +1,20 @@
 import { HTMLAttributes } from 'react';
 
-import {
-    AreaChart,
-    Area,
-    XAxis,
-    Label,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    Legend,
-    ResponsiveContainer,
-    BarChart,
-} from 'recharts';
-import { Heading, Box } from 'components';
+import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
+import { Box } from 'components';
 import type { ILineChartsData } from 'types/linecharts';
 import type { ListEntity } from 'types/open_weather';
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
 interface LineChartsDataArray extends HTMLAttributes<HTMLDivElement> {
     data: ILineChartsData;
     actualDayData: ListEntity;
     headingText: string;
+    height: number;
 }
 
-export default function LineChart({ data, actualDayData, headingText, ...rest }: LineChartsDataArray) {
+export default function LineChart({ data, actualDayData, height, headingText, ...rest }: LineChartsDataArray) {
     return (
         <Box {...rest}>
-            <Heading styles="heading" htmlTag="h3">
-                {headingText}
-            </Heading>
-            <ResponsiveContainer width="100%" height={400} debounce={300}>
+            <ResponsiveContainer width="100%" height={height} debounce={500}>
                 <AreaChart data={data} margin={{ top: 10, right: 40, left: 0, bottom: 0 }}>
                     <XAxis dataKey="date" fontWeight="bold" />
                     <YAxis

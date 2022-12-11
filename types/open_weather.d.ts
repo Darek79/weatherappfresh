@@ -19,6 +19,7 @@ export interface ListEntity {
     pop: number;
     sys: Sys;
     dt_txt: string;
+    dt_time?: string;
     // weatherValues?: WeatherValues[];
 }
 export interface Main {

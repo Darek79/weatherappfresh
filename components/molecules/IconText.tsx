@@ -1,4 +1,4 @@
-import { Text, Box } from 'components';
+import { Box } from 'components';
 import Image, { ImageProps } from 'next/image';
 import { HTMLAttributes } from 'react';
 

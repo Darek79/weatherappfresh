@@ -2,7 +2,6 @@ import { HTMLAttributes } from 'react';
 import Image from 'next/image';
 import { Box, Text } from 'components';
 import arrow from 'public/compass.png';
-import image from 'public/icons/01d.png';
 import { ListEntity } from 'types/open_weather';
 
 interface IDayCardList extends HTMLAttributes<HTMLDivElement> {
