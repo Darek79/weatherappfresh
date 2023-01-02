@@ -16,7 +16,8 @@ export { default as WeekDayContainer } from './molecules/WeekDayContainer';
 export { default as WeekDayBoxes } from './molecules/WeekDayBoxes';
 export { default as WeekDayTemperatureItem } from './molecules/WeekDayTemperatureItem';
 export { default as StatusComponent } from './molecules/StatusComponent';
+export { default as CitySetter } from './molecules/CitySetter';
 
 //ORGNAISM
 
-export { default as MainApp } from './organism/MainApp';
+export { default as MainApp } from './organism/WeatherForecast';

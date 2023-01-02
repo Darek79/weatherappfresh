@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { TimeCityBox, Box, Text, DayCardList } from 'components';
 
@@ -11,21 +11,22 @@ interface IDayCard {
     time?: string;
 }
 
-export default function DayCard({ actualDayObject, time, city }: IDayCard) {
-    const [date, setDate] = useState<string>('');
-    const [timeLocal, setTime] = useState<string>('');
-    useEffect(() => {
-        if (time) {
-            const splitted = time.split('T');
-            const actualTime = splitted[1].substring(0, 5);
-            setTime(actualTime);
-            setDate(splitted[0]);
-        }
-    }, [time]);
+export default function DayCard({ actualDayObject, city }: IDayCard) {
+    // const [date, setDate] = useState<string>('');
+    // const [timeLocal, setTime] = useState<string>('');
+    // useEffect(() => {
+    //     if (time) {
+    //         const splitted = time.split('T');
+    //         const actualTime = splitted[1].substring(0, 5);
+    //         setTime(actualTime);
+    //         setDate(splitted[0]);
+    //     }
+    // }, [time]);
 
     return (
-        <Box className="relative m-auto bg-pageDark w-[250px] p-3 rounded-lg text-white text-center">
-            <TimeCityBox timeStyle="" cityStyle="font-semibold" time={`${date}, ${timeLocal}`} city={city!} />
+        <Box className="relative m-auto bg-pageDark min-w-[250px] p-3 rounded-lg text-white text-center">
+            <TimeCityBox timeStyle="" cityStyle="font-semibold" time="" city={city!} />
+
             <Image
                 alt="weather_icon"
                 priority

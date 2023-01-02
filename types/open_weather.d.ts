@@ -3,6 +3,7 @@ export interface OPEN_WEATHER {
     message: number;
     cnt: number;
     list: ListEntity[];
+    city: City;
 }
 
 export interface WeatherValues {
@@ -49,4 +50,18 @@ export interface Wind {
 }
 export interface Sys {
     pod: string;
+}
+export interface City {
+    id: number;
+    name: string;
+    coord: Coord;
+    country: string;
+    population: number;
+    timezone: number;
+    sunrise: number;
+    sunset: number;
+}
+export interface Coord {
+    lat: number;
+    lon: number;
 }
